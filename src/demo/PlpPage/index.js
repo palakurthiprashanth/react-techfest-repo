@@ -20,6 +20,7 @@ class PlpPage extends Component {
       count:10
     }
   }
+
   componentWillMount() {
     this.props.fetchProducts().then(()=>{
     //  this.handlePageChange(1);
@@ -77,15 +78,7 @@ class PlpPage extends Component {
     );
   }
 
-  /* handlePageChange(pageNumber){
-    debugger;
-    this.setState({
-      productsList: this.state.productsList.slice((pageNumber-1)*5 ,  Math.min(((pageNumber-1)*5) + 5 - 1, this.state.productsList.length - 1))
-    })
-  } */
-
   render() {
-    debugger;
 
     let button;
     if (this.state.count < this.state.productsList.length) {

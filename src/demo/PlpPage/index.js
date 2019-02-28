@@ -6,6 +6,7 @@ import CartPage from '../CartPage';
 import Categories from '../categories';
 import ListGridToggle from '../ListGridToggle';
 import Pagination from "react-js-pagination";
+import logo from '../../images/header.png'
 import './plp.css';
 
 class PlpPage extends Component {
@@ -15,7 +16,8 @@ class PlpPage extends Component {
     this.state = {
       productsList : this.props.productsList,
       activePage:1,
-      hasMore:true
+      hasMore:true,
+      count:10
     }
   }
   componentWillMount() {
@@ -26,6 +28,7 @@ class PlpPage extends Component {
   }
 
   componentWillReceiveProps(nextprops) {
+
      this.setState({
         productsList: nextprops.productsList ? nextprops.productsList : [],
         pageNo: 1,
@@ -36,12 +39,33 @@ class PlpPage extends Component {
   renderProducts(){
     return (
        <div className="row">
+        <div className="row plp-container">
+        <img className="plp-container-image" src={logo}/>
+        </div> 
+ 
+
         <ListGridToggle/>
-          {this.state.productsList.length ? this.state.productsList.map(product =>{
-            return <ProductItem key={product.id} product={product}/>
+          {this.state.productsList.length ? this.state.productsList.slice(0,this.state.count).map((product,idx) =>{
+              return <ProductItem key={product.id} product={product}/>
           }): this.renderProduct()
           }
        </div>
+    );
+  }
+
+  increment() {
+    this.setState({
+      count: this.state.count + 10
+    });
+  };
+
+  renderMoreProducts() {
+    this.increment();
+
+    return (
+      <div>
+        this.renderProducts();
+    </div>
     );
   }
 
@@ -53,20 +77,30 @@ class PlpPage extends Component {
     );
   }
 
-  handlePageChange(pageNumber){
+  /* handlePageChange(pageNumber){
     debugger;
     this.setState({
       productsList: this.state.productsList.slice((pageNumber-1)*5 ,  Math.min(((pageNumber-1)*5) + 5 - 1, this.state.productsList.length - 1))
     })
-  }
+  } */
 
   render() {
+    debugger;
+
+    let button;
+    if (this.state.count < this.state.productsList.length) {
+      button = <button className="button btn btn-info product-cta"
+                onClick={this.renderMoreProducts.bind(this)}>Load More</button>
+    }
     
     return(
       <div className="container product-wrapper">
       <Categories/>
       <div className="col-md-8 col-md-offset-1">
          { this.renderProducts()}
+         { button }
+               
+               
       </div>
        <div>  
       {/*<hr/>

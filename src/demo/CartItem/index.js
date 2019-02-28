@@ -37,7 +37,7 @@ class CartItem extends Component {
    render() {
      return(
        <div className="container">
-         <div className="row">
+         <div className=" category-cart row">
             <div className="col-md-3 cart-image">
                <img src={this.props.product.imageUrl}></img>
             </div>
@@ -64,7 +64,9 @@ class CartItem extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-3" onClick={this.deleteCartItem.bind(this,this.props.product.id)}>delete</div>
+            <div className="col-md-3" >
+            <a href="#" onClick={this.deleteCartItem.bind(this,this.props.product.id)}>delete</a>
+            </div>
          </div>
        </div>
      );

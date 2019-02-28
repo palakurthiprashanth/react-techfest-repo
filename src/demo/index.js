@@ -5,6 +5,7 @@ import PdpPage from './PdpPage';
 import CartPage from './CartPage';
 import Categories from './categories';
 import AutoSuggestion from './AutoSuggestion';
+import Footer from './Footer';
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     PdpPage,
     CartPage,
     Categories,
-    AutoSuggestion
+    AutoSuggestion,
+    Footer
 }

@@ -8,6 +8,10 @@ class Header extends Component {
    filterResults (products){
     return products.map(product => product.name);
   }
+
+    handleNavigation(){
+    this.props.history.push('/cart');
+  }
   render() {
     return(
       /* <div className="nav-container">
@@ -30,10 +34,9 @@ class Header extends Component {
         suggestions = {this.props.productsList}
       />
 <div className="header-icons col-3">
-<div className="header-icons-cart "><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></div>
+<div className="header-icons-cart "><i className="fa fa-shopping-cart fa-lg" aria-hidden="true" onClick="{this.handleNavigation.bind(this)}"></i></div>
 {/* <div className="header-icons-profile">profile</div> */}
-<div class="header-icons-profile"><i class="fa fa-caret-down"
-aria-hidden="true"></i><img class="header-icons-profile-image" alt="user"></img>
+<div class="header-icons-profile"><img class="header-icons-profile-image" alt="user"></img>
 </div>
 {/* <div class="header-icons-profile">Login</div> */}
 </div>

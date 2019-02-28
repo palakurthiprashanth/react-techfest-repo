@@ -16,7 +16,6 @@ class AutoSuggestion extends Component {
   }
 
   filterResult(evt) {
-    debugger;
     this.setState({
       userInput: evt.target.value,
       showSuggestions: evt.target.value ? true : false,

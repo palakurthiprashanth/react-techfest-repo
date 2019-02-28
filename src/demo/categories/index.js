@@ -14,7 +14,6 @@ class Categories extends Component {
     }
 
     filterByCategory(name) {
-        debugger;
         this.props.fetchProducts().then(() => {
             this.props.fetchByCategory(name);
         });

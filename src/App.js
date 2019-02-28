@@ -8,9 +8,11 @@ import {
   PdpPage,
   CartPage,
   Categories,
-  AutoSuggestion
+  AutoSuggestion,
+  Footer
 } from './demo';
 import store from './store';
+import logo from './images/header.png'
 import './app.css';
 import 'font-awesome/css/font-awesome.min.css'; 
 
@@ -18,7 +20,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 const App = () => (
   <Provider store={store}>
-   <Header/>
+   <Header/>  
     <Router>
       <div>
         
@@ -31,6 +33,7 @@ const App = () => (
         <Route exact path="/search" component={AutoSuggestion} />
       </div>
     </Router>
+   <Footer/>
   </Provider>
 );
 
